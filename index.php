@@ -10,7 +10,7 @@ para acessar essa classe e a função criada é necessário serguir os procedime
 // Instanciando a conexão, feita no arquivo conexão.php
 require 'config.php';
 // Fazer o link com o código feito na classe Artigos, utilixando o include.
-include 'artigo.php';
+include 'src/artigo.php';
 // Instanciar a classe Artigos, criando a classe e salvando ele em uma variável, nesse caso usamos $artigo
 $artigo = new Artigo($mySql);
 /* Referenciar a função exibirArtigos(), salvando a função dentro da variável $artigos,
@@ -30,7 +30,7 @@ $artigos = $artigo ->exibir();
         <h1>Meu Blog</h1>
      <?php foreach ($artigos as $artigo) { ?>
         <h2>
-            <a href="<?php echo $artigo ['link']; ?>">
+            <a href="artigo.php?id= <?php echo $artigo ['id'];?>">
             <?php echo $artigo ['titulo']; ?>
             </a>
         </h2>

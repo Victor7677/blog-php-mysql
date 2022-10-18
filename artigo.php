@@ -1,31 +1,34 @@
 <?php
-/* A finalidade desse arquivo que abriga a classe Artigos é de escrever o código PHP pe irá automatizar
-a donstrução e edição de posts na pagina do blog e fazer a conexão com banco de dados
-*/
 
-class Artigo 
-{
-     // Inicia a variável $mysql
-    private $mySql;
-
-     // Cria a função construtora
-    public function __construct(mysqli $mySql)
-    {
-        $this->mysql = $mySql;
-    
-    }
-
-    public function exibir(): array 
-    {
-
-        // Realiza consulta no banco de dados
-        $result = $this->mysql->query('SELECT id,titulo,conteudo FROM artigos');
-        // O método fetch_all retorna um array associativo com valor inteiro   
-        $artigos = $result->fetch_all(MYSQLI_ASSOC);
- 
-         return $artigos;
-    }
-}
-
+require 'config.php';
+require 'src/artigo.php';
+$obj_artigo = new artigo($mySql);
+$artigo = $obj_artigo->encontrarId($_GET['id']);
 
 ?>
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Meu Blog</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>
+           <?php echo $artigo['titulo']; ?>
+        </h1>
+        <p>
+        <?php echo $artigo['conteudo']; ?>
+        </p>
+        <div>
+            <a class="botao botao-block" href="index.php">Voltar</a>
+        </div>
+    </div>
+</body>
+
+</html>

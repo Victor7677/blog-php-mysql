@@ -12,9 +12,8 @@ $mySql = new mysqli('localhost','root', '','blog');
 // A função set_charset pede 1 parametro
 // Ex. set_charset('nome do charset que será utilizado no banco de dados')
 $mySql -> set_charset('utf8');
-if ($mySql==true){
-    echo "banco conectado";
-} else{
+if ($mySql==false){
+
     echo "erro de conexão";
 }
 ?>
