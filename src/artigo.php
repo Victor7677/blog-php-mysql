@@ -14,6 +14,16 @@ class Artigo
         $this->mysql = $mySql;
     
     }
+    // Cria função com strings da variavel e retorna nada por ser uma 'INSERT' (:void)
+    public function adicionar(string $titulo, string $conteudo): void
+    {
+    // Retornar pedido do banco de dados
+        $insereArtigo = $this->mysql->prepare('INSERT INTO artigos (titulo, conteudo) VALUES (?,?);');
+    // Define os paramentros informado por 'VALUES'
+        $insereArtigo->bind_param('ss', $titulo, $conteudo);
+    // Metodo de execução
+        $insereArtigo->execute();
+    }
 
     public function exibir(): array 
     {
