@@ -19,10 +19,17 @@ class Artigo
     {
     // Retornar pedido do banco de dados
         $insereArtigo = $this->mysql->prepare('INSERT INTO artigos (titulo, conteudo) VALUES (?,?);');
-    // Define os paramentros informado por 'VALUES'
+    // Define os paramentros informado por 'VALUES' e os recebe o id
         $insereArtigo->bind_param('ss', $titulo, $conteudo);
     // Metodo de execução
         $insereArtigo->execute();
+    }
+
+    public function excluir(string $id): void
+    {
+        $excluirArtigo = $this->mysql->prepare('DELETE FROM artigos WHERE id =?');
+        $excluirArtigo->bind_param('s', $id);
+        $excluirArtigo->execute();
     }
 
     public function exibir(): array 

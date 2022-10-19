@@ -7,6 +7,10 @@ require '../src/artigo.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $artigo = new Artigo($mySql);
     $artigo->adicionar($_POST['titulo'], $_POST['conteudo']);
+    //redirecionar paginar
+    header('Location:/blog/admin/index.php');
+    //finalizar codigo
+    die();
 }
 
 ?>
