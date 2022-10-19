@@ -25,7 +25,7 @@ die();
         <h1>Você realmente deseja excluir o artigo?</h1>
         <form method="post" action="excluir-artigo.php">
             <p>
-                <input type="hidden" name="id" value="<?php $_GET['id']; ?>" />
+                <input type="hidden" name="id" value="<?= $_GET['id']; ?>" />
                 <button class="botao">Excluir</button>
             </p>
         </form>

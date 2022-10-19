@@ -27,7 +27,8 @@ class Artigo
 
     public function excluir(string $id): void
     {
-        $excluirArtigo = $this->mysql->prepare('DELETE FROM artigos WHERE id =?');
+        //Mandar uma consulta para o banco de dados
+        $excluirArtigo = $this->mysql->prepare('DELETE FROM artigos WHERE id = ?');
         $excluirArtigo->bind_param('s', $id);
         $excluirArtigo->execute();
     }
@@ -39,7 +40,8 @@ class Artigo
         $result = $this->mysql->query('SELECT id,titulo,conteudo FROM artigos');
         // O método fetch_all retorna um array associativo com valor inteiro   
         $artigos = $result->fetch_all(MYSQLI_ASSOC);
- 
+        //Fecha o console para poder outro local rodar sem problemas
+        $result->close();
          return $artigos;
     }
 
@@ -48,7 +50,8 @@ class Artigo
        $selectArtigo = $this->mysql->prepare("SELECT id, titulo, conteudo FROM artigos WHERE id=?");
        $selectArtigo->bind_param('s',$id);
        $selectArtigo->execute();
-       $artigo = $selectArtigo->get_result()->fetch_assoc();
+        $artigo = $selectArtigo->get_result()->fetch_assoc();
+        //$selectArtigo->close();
        return $artigo;
     }
 }

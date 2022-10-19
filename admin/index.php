@@ -5,6 +5,7 @@ include '../src/artigo.php';
 $artigo = new Artigo($mySql);
 $artigos = $artigo ->exibir();
 
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,12 +20,12 @@ $artigos = $artigo ->exibir();
     <div id="container">
         <h1>Página Administrativa</h1>
         <div>
-        <?php foreach($artigos as $art) { ?>
+        <?php foreach($artigos as $art)  {  ?>
             <div id="artigo-admin">
                  <p><?php echo $art['titulo']; ?></p>
                      <nav>
-                        <a class="botao" href="editar-artigo.php? id= <?php $art['id'];?>" >Editar</a>
-                         <a class="botao" href="excluir-artigo.php? id=<?php $art['id'];?>">Excluir</a>
+                        <a class="botao" href="editar-artigo.php? id= <?= $art['id'];?>" >Editar</a>
+                         <a class="botao" href="excluir-artigo.php? id=<?=  $art['id'];?>">Excluir</a>
                      </nav>
             </div>
         <?php } ?>
