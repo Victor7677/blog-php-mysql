@@ -2,6 +2,14 @@
 require '../config.php';
 include '../src/artigo.php';
 
+if($_SERVER['REQUEST_METHOD'] === 'POST')
+{
+    $artigo = new Artigo($mySql);
+    $artigo->editar($_POST['id'], $_POST['titulo'], $_POST['conteudo']);
+
+    header('Location:/blog/admin/index.php');
+}
+
 $artigo = new Artigo ($mySql);
 $art = $artigo->encontrarId($_GET['id']);
 
@@ -29,7 +37,7 @@ $art = $artigo->encontrarId($_GET['id']);
                 <textarea class="campo-form" type="text" name="conteudo" id="titulo"><?= $art['conteudo']; ?></textarea>
             </p>
             <p>
-                <input type="hidden" name="id" value="" />
+                <input type="hidden" name="id" value="<?= $art['id'];?>" />
             </p>
             <p>
                 <button class="botao">Editar Artigo</button>

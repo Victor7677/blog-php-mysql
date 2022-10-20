@@ -1,5 +1,5 @@
 body {
-  background-color: #4B7399;
+  background-color: #86c5c2;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
 }
@@ -9,8 +9,10 @@ body {
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
-  border: solid 1px black;
+  
+  border-radius: 10px;
   margin-top: 20px;
+  box-shadow: black 25px, 25px , 
 }
 
 a {
@@ -35,10 +37,12 @@ ul {
 
 .botao {
   padding: 5px;
-  background-color: rgb(65, 113, 158);
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: rgb(35, 78, 69);
   color: #ffffff;
-  font-weight: bold;
-  border: solid 1px rgb(4, 58, 109);
+  font-weight: 100;
+  border: solid 1px rgb(2, 52, 61);
+  border-radius: 5px;
 }
 
 .campo-form {
@@ -49,4 +53,5 @@ ul {
 .botao-block {
   display: block;
   width: max-content;
+  margin-left: 8px;
 }
